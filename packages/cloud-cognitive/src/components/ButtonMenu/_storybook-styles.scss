@@ -4,3 +4,27 @@
 // This source code is licensed under the Apache-2.0 license found in the
 // LICENSE file in the root directory of this source tree.
 //
+
+@import '../../global/styles/carbon-settings';
+@import '../../global/styles/project-settings';
+
+.button-menu--combo-button {
+  position: relative;
+  display: inline-flex;
+
+  .#{$pkg-prefix}--button-menu {
+    width: 3rem;
+    min-width: 3rem;
+    height: auto;
+    background-color: $interactive-01;
+    border-left: carbon--rem($px: 1px) solid $ui-03;
+  }
+
+  .#{$pkg-prefix}--button-menu__options {
+    width: 100%;
+  }
+
+  .#{$carbon-prefix}--overflow-menu-options__btn {
+    max-width: none;
+  }
+}

@@ -37,6 +37,7 @@ export let ButtonMenu = React.forwardRef(
       className,
       iconDescription,
       label,
+      menuOptionsClass,
       renderIcon: Icon,
       size,
       // Collect any other property values passed in.
@@ -53,7 +54,7 @@ export let ButtonMenu = React.forwardRef(
         blockClass, // Apply the block class to the main HTML element
         className // Apply any supplied class names to the main HTML element.
       )}
-      menuOptionsClass={`${blockClass}__options`}
+      menuOptionsClass={cx(`${blockClass}__options`, menuOptionsClass)}
       renderIcon={() => (
         <div
           className={cx([
@@ -85,6 +86,7 @@ ButtonMenu = pkg.checkComponentEnabled(ButtonMenu, componentName);
 // is used in preference to relying on function.name.
 ButtonMenu.displayName = componentName;
 
+console.log(OverflowMenu, OverflowMenu.propTypes);
 // The types and DocGen commentary for the component props,
 // in alphabetical order (for consistency).
 // See https://www.npmjs.com/package/prop-types#usage.
@@ -110,6 +112,11 @@ ButtonMenu.propTypes = {
    * The button label for the menu trigger.
    */
   label: PropTypes.node,
+
+  /**
+   * The class to apply to the menu options
+   */
+  menuOptionsClass: PropTypes.string,
 
   /**
    * Optional prop to allow overriding the icon rendering.

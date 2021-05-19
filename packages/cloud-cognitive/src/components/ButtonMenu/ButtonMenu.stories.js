@@ -12,12 +12,13 @@ import { action } from '@storybook/addon-actions';
 import { pkg } from '../../settings';
 import { getStorybookPrefix } from '../../../config';
 
+import { Button, ButtonSet } from 'carbon-components-react';
 import { ButtonMenu, ButtonMenuItem } from '.';
 import mdx from './ButtonMenu.mdx';
 
 import styles from './_storybook-styles.scss';
 
-import { Add16 } from '@carbon/icons-react';
+import { Add16, ChevronDown16, ChevronUp16 } from '@carbon/icons-react';
 
 const storybookPrefix = getStorybookPrefix(pkg, ButtonMenu.displayName);
 
@@ -60,6 +61,30 @@ const Template = (args) => {
   );
 };
 
+const ComboButton = (args) => {
+  return (
+    <div className="button-menu--combo-button" data-floating-menu-container>
+      <Button onClick={action(`Click on ComboButtonItem 1`)}>
+        ComboButtonItem 1
+      </Button>
+      <ButtonMenu renderIcon={ChevronDown16} {...args} flipped>
+        <ButtonMenuItem
+          itemText="ComboButtonItem 2"
+          onClick={action(`Click on ComboButtonItem 2`)}
+        />
+        <ButtonMenuItem
+          itemText="ComboButtonItem 3"
+          onClick={action(`Click on ComboButtonItem 3`)}
+        />
+      </ButtonMenu>
+    </div>
+  );
+};
+
 export const buttonMenu = Template.bind({});
 buttonMenu.storyName = 'Button menu';
 buttonMenu.args = {};
+
+export const comboButton = ComboButton.bind({});
+comboButton.storyName = 'ComboButton pattern';
+comboButton.args = {};
